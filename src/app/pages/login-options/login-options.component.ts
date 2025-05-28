@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-options',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './login-options.component.scss'
 })
 export class LoginOptionsComponent {
+
+  constructor(private router: Router){}
+
+  navigateTo(url: string) {
+    this.router.navigate([url]);
+  }
 
 }
