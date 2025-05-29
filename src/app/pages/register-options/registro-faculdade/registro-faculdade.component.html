@@ -1,1 +1,44 @@
-<p>registro-faculdade works!</p>
+<h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Cadastro de Empresa</h2>
+
+<form class="grid grid-cols-1 md:grid-cols-12 gap-4">
+
+  <div class="flex flex-col md:col-span-7">
+    <label for="cnpj" class="mb-1 text-sm font-medium text-gray-700">CNPJ</label>
+    <input id="cnpj" formControlName="cnpj" type="text"
+      class="p-2 uppercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="xx.xxx.xxx/xxxx-xx"/>
+  </div>
+
+  <div class="flex flex-col md:col-span-5">
+    <label for="telefone" class="mb-1 text-sm font-medium text-gray-700">Telefone</label>
+    <input id="telefone" formControlName="telefone" type="tel"
+      class="p-2 uppercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="(xx) xxxxx-xxxx"/>
+  </div>
+
+  <div class="flex flex-col md:col-span-12">
+    <label for="razaoSocial" class="mb-1 text-sm font-medium text-gray-700">Razão Social</label>
+    <input id="razaoSocial" formControlName="razaoSocial" type="text"
+      class="p-2 uppercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="preencha o cnpj"/>
+  </div>
+
+  <div class="flex flex-col md:col-span-8">
+    <label for="email" class="mb-1 text-sm font-medium text-gray-700">Email</label>
+    <input id="email" formControlName="email" type="email"
+      class="p-2 lowercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="example@email.com"/>
+  </div>
+
+  <div class="flex flex-col md:col-span-4">
+    <label for="cep" class="mb-1 text-sm font-medium text-gray-700">CEP</label>
+    <input id="cep" formControlName="cep" type="text"
+      class="p-2 uppercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="xxxxx-xxx"/>
+  </div>
+
+  <div class="md:col-span-12 flex justify-between mt-6 gap-4">
+    <button type="button" (click)="navigateTo('registrar')"
+      class="flex-1 px-6 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition">
+      Voltar
+    </button>
+    <button type="submit" class="flex-1 px-6 py-2 bg-pink-600 text-white rounded hover:bg-pink-700 transition">
+      Registrar
+    </button>
+  </div>
+</form>
