@@ -20,7 +20,7 @@ export const routes: Routes = [
     // ]
   },
   {
-    path: 'registro', component: AuthLayoutComponent,
+    path: 'registrar', component: AuthLayoutComponent,
     children: [
       {path: '', component: RegisterOptionsComponent},
       {path: 'aluno', component: RegistroAlunoComponent},

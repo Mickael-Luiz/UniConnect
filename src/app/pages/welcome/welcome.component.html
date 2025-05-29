@@ -1,5 +1,6 @@
 <div class="w-screen h-screen flex flex-col">
-  <div class="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-pink-700 to-pink-800 text-white px-4">
+  <div
+    class="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-pink-700 to-pink-800 text-white px-4">
     <img src="assets/logos/logo.png" alt="Logo" class="w-[350px] h-auto mb-6" />
 
     <h1 class="text-5xl font-semibold mb-6">Bem-vindo ao UniConnect</h1>
@@ -12,7 +13,9 @@
       (click)="navigate('login')">
         Entrar
       </button>
-      <button class="w-48 bg-transparent border border-white px-6 py-2 rounded-sm text-white font-semibold hover:bg-white hover:text-[#7f1568] transition">
+      <button
+        class="w-48 bg-transparent border border-white px-6 py-2 rounded-sm text-white font-semibold hover:bg-white hover:text-[#7f1568] transition"
+        (click)="navigate('registrar')">
         Registrar
       </button>
     </div>

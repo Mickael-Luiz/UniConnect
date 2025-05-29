@@ -1,1 +1,43 @@
-<p>register-options works!</p>
+<div class="w-full h-full gap-10 flex flex-col justify-center items-center">
+  <h2 class="text-3xl font-bold text-gray-800">Como deseja se registrar?</h2>
+
+  <div class="flex flex-col space-y-4 w-full max-w-sm">
+    <button
+      class="relative py-4 bg-pink-500 rounded-xl text-xl font-semibold shadow-md hover:bg-pink-600 transition px-8 flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-pink-400">
+      <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-6 h-6 w-6" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 14l6.16-3.422a12.083 12.083 0 01.84 4.577c0 2.21-2.686 4-6 4s-6-1.79-6-4a12.083 12.083 0 01.84-4.577L12 14z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v7" />
+      </svg>
+      <span class="w-full text-center">Registrar como Aluno</span>
+    </button>
+
+    <button
+      class="relative py-4 bg-purple-700 rounded-xl text-xl font-semibold shadow-md hover:bg-purple-800 transition px-8 flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+      <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-6 h-6 w-6" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M15 11a4 4 0 11-6 0 4 4 0 016 0z" />
+      </svg>
+      <span class="w-full text-center">Registrar como Professor</span>
+    </button>
+
+    <button
+      class="relative py-4 bg-indigo-700 rounded-xl text-xl font-semibold shadow-md hover:bg-indigo-800 transition px-8 flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-6 h-6 w-6" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2M3 10l9-7 9 7M4 10v11h16V10" />
+      </svg>
+      <span class="w-full text-center">Registrar como Faculdade</span>
+    </button>
+  </div>
+  <div class="w-full flex justify-between gap-4 mt-4 max-w-sm">
+    <button type="button"
+      class="flex-1 px-6 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition" (click)="navigateTo('')">Voltar</button>
+    <button type="submit"
+      class="flex-1 px-6 py-2 bg-pink-600 text-white rounded hover:bg-pink-700 transition" (click)="navigateTo('login')">Entrar</button>
+  </div>
+</div>
