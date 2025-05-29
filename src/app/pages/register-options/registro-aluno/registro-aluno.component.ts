@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-aluno',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './registro-aluno.component.scss'
 })
 export class RegistroAlunoComponent {
+
+  constructor(private router: Router) {}
+
+  navigateTo(url: string) {
+    this.router.navigate([url])
+  }
 
 }
