@@ -7,9 +7,11 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroAlunoComponent } from './pages/register-options/registro-aluno/registro-aluno.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { DashboardComponent } from './pages/faculdade/dashboard/dashboard.component';
 
 export const routes: Routes = [
-  {path: '', component: WelcomeComponent},
+  { path: '', component: WelcomeComponent },
   {
     path: 'login', component: LoginComponent,
     // children: [
@@ -22,16 +24,19 @@ export const routes: Routes = [
   {
     path: 'registrar', component: AuthLayoutComponent,
     children: [
-      {path: '', component: RegisterOptionsComponent},
-      {path: 'aluno', component: RegistroAlunoComponent},
-      {path: 'professor', component: RegistroProfessorComponent},
-      {path: 'faculdade', component: RegistroFaculdadeComponent},
+      { path: '', component: RegisterOptionsComponent },
+      { path: 'aluno', component: RegistroAlunoComponent },
+      { path: 'professor', component: RegistroProfessorComponent },
+      { path: 'faculdade', component: RegistroFaculdadeComponent },
     ]
   },
   {
-    path: 'app', component: AppLayoutComponent,
-    children: []
+    path: 'faculdade', component: MainLayoutComponent, children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
+    ]
   },
-  {path: '**', redirectTo: ''}
+
+  { path: '**', redirectTo: '' }
 
 ];

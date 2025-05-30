@@ -31,8 +31,21 @@ export class LoginComponent {
 
   logar(e: Event) {
     e.preventDefault()
-    console.log(this.formUsuario.value);
     this.auth.login(this.formUsuario.value.email)
+    if (this.auth.isLogado()) {
+      switch (this.auth.getPerfil()) {
+        case 'FACULDADE':
+          this.router.navigate(['faculdade']);
+          break;
+        case 'ALUNO':
+          this.router.navigate(['aluno']);
+          break;
+        case 'PROFESSOR':
+          this.router.navigate(['professor']);
+          break;
+      }
+
+    }
   }
 
 }
