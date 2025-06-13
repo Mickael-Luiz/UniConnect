@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppLayoutComponent } from './app-layout.component';
+import { RightbarsComponent } from './rightbars.component';
 
-describe('AppLayoutComponent', () => {
-  let component: AppLayoutComponent;
-  let fixture: ComponentFixture<AppLayoutComponent>;
+describe('RightbarsComponent', () => {
+  let component: RightbarsComponent;
+  let fixture: ComponentFixture<RightbarsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppLayoutComponent]
+      imports: [RightbarsComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(AppLayoutComponent);
+
+    fixture = TestBed.createComponent(RightbarsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
