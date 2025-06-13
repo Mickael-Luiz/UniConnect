@@ -1,10 +1,11 @@
-<div class="h-full w-[230px] bg-[#d3d3d3] flex flex-col gap-6">
+<div class="h-full w-[230px] bg-[#eaeff6] flex flex-col gap-6 text-black">
 
   <!-- Seção: Geral -->
   <div class="mt-10">
     @if(perfil === 'FACULDADE') {
     <a routerLink="/faculdade/dashboard" routerLinkActive="bg-gray-700 text-white"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer">
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
         <path fill-rule="evenodd"
           d="M2.25 13.5a8.25 8.25 0 0 1 8.25-8.25.75.75 0 0 1 .75.75v6.75H18a.75.75 0 0 1 .75.75 8.25 8.25 0 0 1-16.5 0Z"
@@ -18,8 +19,9 @@
     </a>
     }
 
-    <a routerLink="/perfil"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer">
+    <a routerLink="/perfil" routerLinkActive="bg-gray-700 text-white"
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -31,10 +33,11 @@
   <!-- ADMINISTRAÇÃO -->
   @if(perfil === 'FACULDADE') {
   <div class="mb-4">
-    <h3 class="text-xs font-bold uppercase text-gray-600 mb-2 px-3">Administração</h3>
+    <h3 class="text-xs font-bold uppercase text-gray-700 mb-2 px-3">Administração</h3>
 
-    <a routerLink="/cadastrar-curso"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer">
+    <a routerLink="/cadastrar-curso" routerLinkActive="bg-gray-700 text-white"
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
         <path
           d="M5.566 4.657A4.505 4.505 0 0 1 6.75 4.5h10.5c.41 0 .806.055 1.183.157A3 3 0 0 0 15.75 3h-7.5a3 3 0 0 0-2.684 1.657ZM2.25 12a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-6ZM5.25 7.5c-.41 0-.806.055-1.184.157A3 3 0 0 1 6.75 6h10.5a3 3 0 0 1 2.683 1.657A4.505 4.505 0 0 0 18.75 7.5H5.25Z" />
@@ -42,8 +45,9 @@
       <span>Cursos</span>
     </a>
 
-    <a routerLink="/cadastrar-aluno"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer">
+    <a routerLink="/cadastrar-aluno" routerLinkActive="bg-gray-700 text-white"
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
         <path
           d="M5.25 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM2.25 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM18.75 7.5a.75.75 0 0 0-1.5 0v2.25H15a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0v-2.25H21a.75.75 0 0 0 0-1.5h-2.25V7.5Z" />
@@ -56,10 +60,11 @@
   <!-- FINANCEIRO -->
   @if(perfil === 'FACULDADE') {
   <div>
-    <h3 class="text-xs font-bold uppercase text-gray-600 mb-2 px-3">Financeiro</h3>
+    <h3 class="text-xs font-bold uppercase text-gray-700 mb-2 px-3">Financeiro</h3>
 
-    <a routerLink="/financeiro/mensalidades"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer">
+    <a routerLink="/financeiro/mensalidades" routerLinkActive="bg-gray-700 text-white"
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
         <path
           d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004ZM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 0 1-.921.42Z" />
@@ -70,8 +75,9 @@
       <span>Mensalidades</span>
     </a>
 
-    <a routerLink="/financeiro/relatorios"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer">
+    <a routerLink="/financeiro/relatorios" routerLinkActive="bg-gray-700 text-white"
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18M9 17V9m4 8V5m4 12v-6" />
       </svg>
@@ -82,8 +88,9 @@
 
   <!-- SUPORTE E LOGOUT -->
   <div class="mt-auto mb-6 flex flex-col gap-2 w-full">
-    <a routerLink="/suporte"
-      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm cursor-pointer w-full">
+    <a routerLink="/suporte" routerLinkActive="bg-gray-700 text-white"
+      class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm cursor-pointer
+      transition-colors duration-200 ease-in-out w-full">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-5">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,7 +100,7 @@
       <span>Suporte</span>
     </a>
 
-    <button class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-gray-100 rounded-sm text-left w-full" (click)="logout()">
+    <button class="flex items-center gap-2 py-2 px-3 hover:bg-gray-600 hover:text-white rounded-sm text-left w-full" (click)="logout()">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="w-5 h-5">
         <path stroke-linecap="round" stroke-linejoin="round"
