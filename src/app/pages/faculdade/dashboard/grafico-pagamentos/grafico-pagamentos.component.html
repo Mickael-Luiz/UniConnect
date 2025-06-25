@@ -1,0 +1,36 @@
+<div class="w-full h-full flex flex-col gap-4">
+
+  <!-- Título + Botões -->
+  <div class="flex justify-between items-center flex-wrap gap-2">
+    <h2 class="text-lg font-semibold text-gray-700">Pagamentos</h2>
+
+    <div class="flex gap-2 flex-wrap">
+      @for (disciplina of disciplinas; track disciplina.nome) {
+        <button 
+          type="button"
+          class="px-3 py-1 rounded text-sm transition-colors"
+          [class.bg-blue-500]="disciplina.ativo"
+          [class.text-white]="disciplina.ativo"
+          [class.hover\:bg-blue-600]="disciplina.ativo"
+          [class.bg-gray-300]="!disciplina.ativo"
+          [class.text-gray-700]="!disciplina.ativo"
+          [class.hover\:bg-gray-400]="!disciplina.ativo"
+          (click)="selecionarDisciplina(disciplina.nome)"
+        >
+          {{ disciplina.nome }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Indicadores -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 h-full">
+    @for (p of pagamentos; track p.label) {
+      <div class="flex flex-col items-center justify-center bg-white rounded-lg shadow p-4 h-full">
+        <div class="text-2xl font-bold" [class]="p.cor">{{ p.valor }}</div>
+        <div class="text-gray-500 text-sm">{{ p.label }}</div>
+      </div>
+    }
+  </div>
+
+</div>

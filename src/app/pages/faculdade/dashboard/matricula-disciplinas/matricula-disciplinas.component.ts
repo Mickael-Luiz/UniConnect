@@ -76,7 +76,7 @@ export class LinhaMatriculaComponent implements AfterViewInit {
     };
 
     new Chart(
-      document.getElementById('lineChart') as HTMLCanvasElement,
+      document.getElementById('lineChartMatriculas') as HTMLCanvasElement,
       config
     );
   }

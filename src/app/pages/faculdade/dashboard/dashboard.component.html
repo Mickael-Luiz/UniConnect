@@ -1,10 +1,18 @@
-<div class="w-full h-full flex flex-col gap-5 p-5">
+<div class="w-full h-full flex flex-col gap-5 p-5 overflow-auto hide-scrollbar">
 
-  <!-- Post -->
-  <div class="w-full h-[350px] bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col justify-between">
-    <app-matricula-disciplinas></app-matricula-disciplinas>
+  <!-- Gráfico de Pagamentos -->
+  <div class="w-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col justify-between">
+    <app-grafico-pagamentos></app-grafico-pagamentos>
   </div>
 
-
+  <!-- Dashboard Matrículas -->
+  <div class="w-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col justify-between">
+    <app-matricula-disciplinas></app-matricula-disciplinas>
+  </div>
+  
+  <!-- HeatMap Evasão -->
+  <div class="w-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col justify-between">
+    <app-fluxo-financeiro></app-fluxo-financeiro>
+  </div>
 
 </div>
