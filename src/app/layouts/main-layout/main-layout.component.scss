@@ -1,0 +1,17 @@
+@media (max-width: 1199px) {
+  .conteudo {
+    width: calc(100% - 410px);
+  }
+}
+
+@media (max-width: 991px) {
+  .conteudo {
+    width: calc(100% - 230px);
+  }
+}
+
+@media (max-width: 767px) {
+  .conteudo {
+    width: calc(100% - 50px);
+  }
+}

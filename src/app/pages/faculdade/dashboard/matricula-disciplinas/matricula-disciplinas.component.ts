@@ -25,14 +25,14 @@ export class LinhaMatriculaComponent implements AfterViewInit {
         datasets: [
           {
             label: 'Direito',
-            data: [10, 20, 15, 30, 25, 40],
+            data: [10, 20, 15, 60, 25, 40],
             borderColor: 'rgba(75, 192, 192, 1)',
             fill: false,
             tension: 0.1
           },
           {
             label: 'Odonto',
-            data: [18,13,40,87,60,25],
+            data: [18,13,40,87,60,64],
             borderColor: 'rgba(192, 75, 192, 1)',
             fill: false,
             tension: 0.1
@@ -43,7 +43,28 @@ export class LinhaMatriculaComponent implements AfterViewInit {
             borderColor: 'rgba(192, 192, 75, 1)',
             fill: false,
             tension: 0.1
-          }
+          },
+          {
+            label: 'Administração',
+            data: [30,55,22,40,18,31],
+            borderColor: 'rgba(152, 152, 172, 1)',
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'Pedagogia',
+            data: [14,23,34,25,42,45],
+            borderColor: 'rgba(20, 155, 20, 1)',
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'Ciência da Computação',
+            data: [31,24,36,48,50,38],
+            borderColor: 'rgba(152, 120, 0, 1)',
+            fill: false,
+            tension: 0.1
+          },
         ]
       },
       options: {

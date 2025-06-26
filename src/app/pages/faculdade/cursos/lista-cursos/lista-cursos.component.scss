@@ -1,0 +1,12 @@
+:host ::ng-deep .p-dropdown {
+  width: 16rem !important; /* ajuste o valor para a largura desejada */
+}
+
+:host ::ng-deep .p-dropdown-panel {
+  min-width: 16rem !important; /* largura mínima do painel */
+}
+
+:host ::ng-deep .p-togglebutton-content {
+  background: #ffffff;
+  color: #0F172A
+}

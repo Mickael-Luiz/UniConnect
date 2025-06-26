@@ -1,12 +1,49 @@
+@import "primeicons/primeicons.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .hide-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
+}
+
+input.p-inputtext:focus {
+  border-color: #1e40af !important;
+  box-shadow: 0 0 0 0.05rem rgba(30, 64, 175, 0.5) !important;
+  outline: none !important;
+}
+
+.p-dropdown.p-focus {
+  border-color: #1e40af !important;
+  box-shadow: 0 0 0 0.05rem rgba(30, 64, 175, 0.5) !important;
+  outline: none !important;
+}
+
+.p-select-option.p-select-option-selected.p-focus {
+  background-color: #c7cfec !important;
+  color: black !important;
+}
+
+.p-button {
+  background-color: #374151 !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.p-button:hover,
+.p-button:focus {
+  background-color: #2c3650 !important;
+  color: white !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.5) !important;
+}
+
+.p-button:focus-visible {
+  outline: none !important;
 }
