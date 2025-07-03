@@ -2,9 +2,8 @@
   <div class="w-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col" [formGroup]="formFiltro">
     <h2 class="text-lg font-semibold text-gray-700">Cursos Ofertados</h2>
 
+    <!-- Filtros -->
     <div class="flex justify-between items-center mb-4">
-
-      <!-- Filtros -->
       <form class="flex flex-col w-full">
         <h3 class="text-sm font-semibold text-gray-700">Filtrar</h3>
 
@@ -12,25 +11,18 @@
           <div class="flex flex-wrap gap-3 items-center flex-grow">
 
             <input pInputText formControlName="nome" placeholder="Buscar por nome..."
-              class="p-inputtext-sm w-[16rem] h-[40px] p-3 focus:ring-2 focus:ring-blue-900 focus:border-blue-900 rounded-md border-gray-300" />
+              class="p-inputtext-sm w-[16rem] h-[40px] p-3 rounded-md" />
 
-            <p-dropdown formControlName="modalidade"
-              class="p-dropdown-sm w-48 h-[40px] focus:ring-2 focus:ring-blue-900 focus:border-blue-900"
-              [options]="modalidades" placeholder="Todas modalidades" optionLabel="label" optionValue="value">
+            <p-dropdown formControlName="modalidade" class="p-dropdown-sm w-48 h-[40px]" [options]="modalidadesFiltro"
+              placeholder="Todas modalidades" optionLabel="label" optionValue="value">
             </p-dropdown>
 
-            <p-dropdown formControlName="status"
-              class="p-dropdown-sm w-48 h-[40px] focus:ring-2 focus:ring-blue-900 focus:border-blue-900"
-              [options]="statusOptions" placeholder="Todos status" optionLabel="label" optionValue="value">
+            <p-dropdown formControlName="status" class="p-dropdown-sm w-48 h-[40px]" [options]="statusOptions"
+              placeholder="Todos status" optionLabel="label" optionValue="value">
             </p-dropdown>
           </div>
-
-          <p-button label="Adicionar Curso" icon="pi pi-plus"
-            class="ml-4 p-button-text text-gray-800 bg-gray-200 hover:bg-gray-300 rounded-md"></p-button>
         </div>
-
       </form>
-
     </div>
 
     <div class="flex flex-col">
@@ -56,8 +48,13 @@
 
     </div>
 
-    <p-togglebutton formControlName="viewAsCard" class="w-[150px]" onLabel="Card" offLabel="Table"
-      onIcon="pi pi-credit-card" offIcon="pi pi-table" styleClass="min-w-20" />
+    <div class="w-full flex justify-between">
+      <!-- <p-togglebutton formControlName="viewAsCard" class="w-[150px]" onLabel="Card" offLabel="Table"
+        onIcon="pi pi-credit-card" offIcon="pi pi-table" styleClass="min-w-20" /> -->
+      <p-button label="Adicionar Curso" icon="pi pi-plus"
+        class="p-button-text text-gray-800 bg-gray-200 hover:bg-gray-300 rounded-md"
+        (click)="openModalAdd()"></p-button>
+    </div>
 
     <!-- Cards -->
     @if(formFiltro.value.viewAsCard) {
@@ -81,8 +78,7 @@
     </div>
     }
 
-    @if(!formFiltro.value.viewAsCard) {
-    <!-- Container da tabela com overflow para scroll em telas pequenas -->
+    <!-- @if(!formFiltro.value.viewAsCard) {
     <div class="hidden sm:block overflow-x-auto rounded-xl shadow">
       <table class="w-full text-sm bg-white rounded-xl">
         <thead>
@@ -92,7 +88,7 @@
             <th class="p-3 text-left">Carga horária</th>
             <th class="p-3 text-left">Turmas abertas</th>
             <th class="p-3 text-center">Status</th>
-            <th class="p-3 text-center">Ações</th> <!-- Nova coluna -->
+            <th class="p-3 text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -122,11 +118,11 @@
           }
         </tbody>
       </table>
-    </div>
+    </div> -->
 
 
     <!-- Cards para mobile -->
-    <div class="block sm:hidden space-y-4">
+    <!-- <div class="block sm:hidden space-y-4">
       @for (curso of cursosFiltrados; track curso.nome) {
       <div class="bg-white rounded-xl shadow p-4 flex flex-col gap-2">
         <div class="font-semibold text-gray-700 text-lg">{{ curso.nome }}</div>
@@ -144,11 +140,38 @@
       </div>
       }
     </div>
-
-
-
-    }
+    } -->
 
   </div>
 
 </div>
+
+<p-dialog header="Novo Curso" [modal]="true" [(visible)]="formAddVisible" [style]="{ width: '30rem' }">
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-1">
+      <label for="nome" class="text-sm font-medium text-gray-700">Nome do Curso</label>
+      <input pInputText id="nome" placeholder="Ex: Administração"
+        class="p-inputtext-sm w-full h-[40px] p-3 rounded-md" />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label for="modalidade" class="text-sm font-medium text-gray-700">Modalidade</label>
+      <p-dropdown id="modalidade" class="p-dropdown-sm w-full h-[40px]" [options]="modalidades"
+        placeholder="Selecione a modalidade" optionLabel="label" optionValue="value">
+      </p-dropdown>
+    </div>
+    <div class="flex flex-col gap-1">
+      <label for="cargaHoraria" class="text-sm font-medium text-gray-700">Carga Horária (horas)</label>
+      <input pInputText id="cargaHoraria" type="text" placeholder="Ex: 3200"
+        class="p-inputtext-sm w-full h-[40px] p-3 rounded-md" />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label for="coordenador" class="text-sm font-medium text-gray-700">Coordenador do Curso</label>
+      <input pInputText id="coordenador" type="text" placeholder="Nome do coordenador"
+        class="p-inputtext-sm w-full h-[40px] p-3 rounded-md" />
+    </div>
+    <div class="flex justify-end gap-2">
+      <p-button label="Cancel" severity="secondary" (click)="formAddVisible = false" />
+      <p-button label="Save" (click)="formAddVisible = false" />
+    </div>
+  </div>
+</p-dialog>
