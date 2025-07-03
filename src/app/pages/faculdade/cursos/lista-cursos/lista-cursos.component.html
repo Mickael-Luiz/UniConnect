@@ -1,5 +1,5 @@
 <div class="w-full h-full flex flex-col gap-5 p-5 overflow-auto hide-scrollbar">
-  <div class="w-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col" [formGroup]="formFiltro">
+  <div class="w-full h-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col" [formGroup]="formFiltro">
     <h2 class="text-lg font-semibold text-gray-700">Cursos Ofertados</h2>
 
     <!-- Filtros -->
@@ -13,13 +13,12 @@
             <input pInputText formControlName="nome" placeholder="Buscar por nome..."
               class="p-inputtext-sm w-[16rem] h-[40px] p-3 rounded-md" />
 
-            <p-dropdown formControlName="modalidade" class="p-dropdown-sm w-48 h-[40px]" [options]="modalidadesFiltro"
-              placeholder="Todas modalidades" optionLabel="label" optionValue="value">
-            </p-dropdown>
+            <p-select [options]="modalidadesFiltro" formControlName="modalidade" [checkmark]="true" optionLabel="label"
+              optionValue="value" [showClear]="true" class="w-full md:w-56" />
 
-            <p-dropdown formControlName="status" class="p-dropdown-sm w-48 h-[40px]" [options]="statusOptions"
-              placeholder="Todos status" optionLabel="label" optionValue="value">
-            </p-dropdown>
+            <p-select [options]="statusOptions" formControlName="status" [checkmark]="true" optionLabel="label"
+              optionValue="value" [showClear]="true" class="w-full md:w-56" />
+
           </div>
         </div>
       </form>
@@ -68,7 +67,8 @@
              curso.modalidade === 'EAD' ? 'bg-green-50 border-green-200' :
              curso.modalidade === 'Híbrido' ? 'bg-yellow-50 border-yellow-200' :
              'bg-gray-50 border-gray-200'
-            ]">
+            ]"
+        (click)="navigateGerenciarCurso(curso.id)">
         <h2 class="font-semibold text-gray-700 text-lg">{{ curso.nome }}</h2>
         <div class="text-sm text-gray-600">Modalidade: {{ curso.modalidade }}</div>
         <div class="text-sm text-gray-600">Carga horária: {{ curso.cargaHoraria }}h</div>
@@ -151,23 +151,22 @@
     <div class="flex flex-col gap-1">
       <label for="nome" class="text-sm font-medium text-gray-700">Nome do Curso</label>
       <input pInputText id="nome" placeholder="Ex: Administração"
-        class="p-inputtext-sm w-full h-[40px] p-3 rounded-md" />
+        class="p-inputtext-sm p-3 rounded-md" />
     </div>
     <div class="flex flex-col gap-1">
       <label for="modalidade" class="text-sm font-medium text-gray-700">Modalidade</label>
-      <p-dropdown id="modalidade" class="p-dropdown-sm w-full h-[40px]" [options]="modalidades"
-        placeholder="Selecione a modalidade" optionLabel="label" optionValue="value">
-      </p-dropdown>
+      <p-select id="modalidade" [options]="modalidades" [checkmark]="true" optionLabel="label"
+        optionValue="value" [showClear]="true" placeholder="Modalidade"  class="h-[35px]"/>
     </div>
     <div class="flex flex-col gap-1">
       <label for="cargaHoraria" class="text-sm font-medium text-gray-700">Carga Horária (horas)</label>
       <input pInputText id="cargaHoraria" type="text" placeholder="Ex: 3200"
-        class="p-inputtext-sm w-full h-[40px] p-3 rounded-md" />
+        class="p-inputtext-sm p-3 rounded-md" />
     </div>
     <div class="flex flex-col gap-1">
       <label for="coordenador" class="text-sm font-medium text-gray-700">Coordenador do Curso</label>
-      <input pInputText id="coordenador" type="text" placeholder="Nome do coordenador"
-        class="p-inputtext-sm w-full h-[40px] p-3 rounded-md" />
+      <input pInputText id="coordenador" type="text" placeholder="Buscar coordenador"
+        class="p-inputtext-sm p-3 rounded-md" />
     </div>
     <div class="flex justify-end gap-2">
       <p-button label="Cancel" severity="secondary" (click)="formAddVisible = false" />

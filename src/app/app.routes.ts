@@ -10,6 +10,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { DashboardComponent } from './pages/faculdade/dashboard/dashboard.component';
 import { faculdadeGuard } from './guards/faculdade.guard';
 import { ListaCursosComponent } from './pages/faculdade/cursos/lista-cursos/lista-cursos.component';
+import { CursoComponent } from './pages/faculdade/cursos/curso/curso.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -35,7 +36,8 @@ export const routes: Routes = [
     path: 'faculdade', canActivate: [faculdadeGuard], component: MainLayoutComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'curso', component: ListaCursosComponent}
+      { path: 'curso', component: ListaCursosComponent},
+      { path: 'curso/:id', component: CursoComponent}
     ]
   },
 

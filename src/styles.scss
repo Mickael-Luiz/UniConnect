@@ -18,7 +18,7 @@ input.p-inputtext:focus {
   outline: none !important;
 }
 
-.p-dropdown.p-focus {
+.p-select.p-focus {
   border-color: #1e40af !important;
   box-shadow: 0 0 0 0.05rem rgba(30, 64, 175, 0.5) !important;
   outline: none !important;
@@ -46,4 +46,8 @@ input.p-inputtext:focus {
 
 .p-button:focus-visible {
   outline: none !important;
+}
+
+.p-select > span {
+  padding: 4px 12px;
 }

@@ -1,12 +1,12 @@
 :host ::ng-deep {
 
-  .p-dropdown {
+  .p-select {
     width: 16rem !important;
   }
 
-  .p-dropdown-panel {
-    min-width: 16rem !important;
-  }
+  // .p-dropdown-panel {
+  //   min-width: 16rem !important;
+  // }
 
   .p-togglebutton-content {
     background: #ffffff;
@@ -14,7 +14,7 @@
   }
 
   p-dialog {
-    .p-dropdown {
+    .p-select {
       width: 100% !important;
     }
   }

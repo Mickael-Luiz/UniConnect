@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-curso',
@@ -18,7 +19,8 @@ import { DialogModule } from 'primeng/dialog';
     InputTextModule,
     ToggleButtonModule,
     ButtonModule,
-    DialogModule
+    DialogModule,
+    SelectModule
   ],
   templateUrl: './lista-cursos.component.html',
   styleUrl: './lista-cursos.component.scss'
@@ -31,12 +33,12 @@ export class ListaCursosComponent {
 
   // Filtros
   cursos = [
-    { nome: 'Direito', modalidade: 'Presencial', cargaHoraria: 3600, status: 'Ativo', turmasAbertas: 3 },
-    { nome: 'Administração', modalidade: 'EAD', cargaHoraria: 3000, status: 'Ativo', turmasAbertas: 2 },
-    { nome: 'Odontologia', modalidade: 'Híbrido', cargaHoraria: 4000, status: 'Inativo', turmasAbertas: 0 },
-    { nome: 'ADS', modalidade: 'EAD', cargaHoraria: 2800, status: 'Ativo', turmasAbertas: 4 },
-    { nome: 'Pedagogia', modalidade: 'Presencial', cargaHoraria: 3600, status: 'Ativo', turmasAbertas: 4 },
-    { nome: 'Ciência da Computação', modalidade: 'Híbrido', cargaHoraria: 3000, status: 'Ativo', turmasAbertas: 3 },
+    {id:1, nome: 'Direito', modalidade: 'Presencial', cargaHoraria: 3600, status: 'Ativo', turmasAbertas: 3 },
+    {id:2, nome: 'Administração', modalidade: 'EAD', cargaHoraria: 3000, status: 'Ativo', turmasAbertas: 2 },
+    {id:3, nome: 'Odontologia', modalidade: 'Híbrido', cargaHoraria: 4000, status: 'Inativo', turmasAbertas: 0 },
+    {id:4, nome: 'ADS', modalidade: 'EAD', cargaHoraria: 2800, status: 'Ativo', turmasAbertas: 4 },
+    {id:5, nome: 'Pedagogia', modalidade: 'Presencial', cargaHoraria: 3600, status: 'Ativo', turmasAbertas: 4 },
+    {id:6, nome: 'Ciência da Computação', modalidade: 'Híbrido', cargaHoraria: 3000, status: 'Ativo', turmasAbertas: 3 },
   ];
 
   modalidadesFiltro = [
@@ -92,6 +94,10 @@ export class ListaCursosComponent {
 
   openModalAdd() {
     this.formAddVisible = true
+  }
+
+  navigateGerenciarCurso(id: number) {
+    this.router.navigate([`/faculdade/curso/${id}`])
   }
 
 }
