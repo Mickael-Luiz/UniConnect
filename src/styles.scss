@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+input, .p-select > span{
+  height: 33px;
+}
+
 .hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -49,5 +53,6 @@ input.p-inputtext:focus {
 }
 
 .p-select > span {
-  padding: 4px 12px;
+  display: flex;
+  align-items: center;
 }

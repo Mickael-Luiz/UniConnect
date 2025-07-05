@@ -1,1 +1,66 @@
-<p>grade-curricular works!</p>
+<div class="w-full flex flex-col justify-start gap-3">
+
+  <div class="flex gap-3">
+    <p-button label="Adicionar Semestre" icon="pi pi-plus" iconPos="right" (onClick)="adicionarSemestre()" />
+    <!-- <p-button label="Visualizar Semestres" (click)="visualizarSemestre()" /> -->
+  </div>
+
+  <h2 class="text-xl font-semibold text-gray-800 col-span-12">Semestres</h2>
+
+  <div>
+    <p-accordion value="0" class="flex flex-col gap-1">
+      @for(semestre of semestres; track semestre) {
+      <p-accordion-panel [value]="semestre.id">
+        <p-accordion-header>
+          <ng-template #toggleicon let-active="active">
+            @if (active) {
+            <i class="pi pi-minus"></i>
+            } @else {
+            <i class="pi pi-plus"></i>
+            }
+          </ng-template>
+          <span class="flex items-center gap-2 w-full">
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+            <span class="font-bold whitespace-nowrap">{{ semestre.id + '° Semestre'}}</span>
+            <p-badge class="ml-auto mr-2" />
+          </span>
+        </p-accordion-header>
+        <p-accordion-content>
+
+          <h2 class="text-md mb-2 text-gray-800 col-span-12">Disciplinas</h2>
+
+          <p-accordion value="1" class="flex flex-col gap-2 mb-3">
+            @for(disciplinaCur of semestre.disciplinas; track disciplinaCur) {
+            <p-accordion-panel [value]="disciplinaCur.disciplina.id">
+              <p-accordion-header style="background-color: rgb(243, 246, 250);">
+                <ng-template #toggleicon let-active="active">
+                  @if (active) {
+                  <i class="pi pi-minus"></i>
+                  } @else {
+                  <i class="pi pi-plus"></i>
+                  }
+                </ng-template>
+                <span class="flex items-center gap-2 w-full">
+                  <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                    shape="circle" />
+                  <span class="font-bold whitespace-nowrap">{{ disciplinaCur.disciplina.titulo }}</span>
+                  <p-badge class="ml-auto mr-2" />
+                </span>
+              </p-accordion-header>
+              <p-accordion-content>
+                <p>
+                  TTTTTTTTTTEEEEEEEEEEESSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEE
+                </p>
+              </p-accordion-content>
+            </p-accordion-panel>
+            }
+          </p-accordion>
+
+          <p-button label="Adicionar disciplina" icon="pi pi-plus" iconPos="right"
+            (onClick)="adicionarDisciplina(semestre.id)" />
+        </p-accordion-content>
+      </p-accordion-panel>
+      }
+    </p-accordion>
+  </div>
+</div>

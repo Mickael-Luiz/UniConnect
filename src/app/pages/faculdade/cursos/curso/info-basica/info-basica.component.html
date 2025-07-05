@@ -1,1 +1,41 @@
-<p>info-basica works!</p>
+<form [formGroup]="form" class="grid grid-cols-12 gap-4">
+
+  <h2 class="text-xl font-semibold text-gray-800 col-span-12">Informações Base</h2>
+
+  <div class="flex flex-col gap-1 col-span-4">
+    <label for="nome" class="text-sm font-medium text-gray-700">Nome do Curso</label>
+    <input pInputText id="nome" formControlName="nome" placeholder="Ex: Administração"
+      class="p-inputtext-sm w-full p-3 rounded-md border border-gray-300" />
+  </div>
+
+  <div class="flex flex-col gap-1 col-span-3">
+    <label for="modalidade" class="text-sm font-medium text-gray-700">Modalidade</label>
+    <p-select id="modalidade" formControlName="modalidade" class="w-full h-[33px]"
+      [options]="modalidades" optionLabel="label" optionValue="value" />
+  </div>
+
+  <div class="flex flex-col gap-1 col-span-3">
+    <label for="coordenador" class="text-sm font-medium text-gray-700">Coordenador do Curso</label>
+    <input pInputText id="coordenador" formControlName="coordenador"
+      class="p-inputtext-sm w-full p-3 rounded-md border border-gray-300" />
+  </div>
+
+  <div class="flex flex-col gap-1 col-span-2">
+    <label for="cargaHoraria" class="text-sm font-medium text-gray-700">Carga Horária (horas)</label>
+    <input pInputText id="cargaHoraria" min="0" formControlName="cargaHoraria"
+      class="p-inputtext-sm w-full p-3 rounded-md border border-gray-300" />
+  </div>
+
+  <div class="flex flex-col gap-1 col-span-3">
+    <label for="proponente" class="text-sm font-medium text-gray-700">Proponente</label>
+    <input pInputText id="proponente" formControlName="proponente"
+      class="p-inputtext-sm w-full p-3 rounded-md border border-gray-300" [disabled]="true"/>
+  </div>
+
+  <div class="flex flex-col gap-1 col-span-2">
+    <label for="status" class="text-sm font-medium text-gray-700">Status</label>
+    <input pInputText id="status" formControlName="status" class="p-dropdown-sm w-full"
+      optionLabel="label" optionValue="value" />
+  </div>
+
+</form>

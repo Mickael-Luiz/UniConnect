@@ -7,6 +7,7 @@ import { AnaliseCursoComponent } from './analise-curso/analise-curso.component';
 
 import { ButtonModule } from 'primeng/button';
 import { StepperModule } from 'primeng/stepper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-curso',
@@ -24,5 +25,14 @@ import { StepperModule } from 'primeng/stepper';
 })
 export class CursoComponent {
 
+  constructor(private router: Router) {}
+
+  navigateListaCursos() {
+    this.router.navigate(['/faculdade/cursos'])
+  }
+
+  concluir() {
+    window.alert('Curso Preenchido com sucesso!\n Assim que o curso for ativado, avisaremos a você.')
+  }
 
 }

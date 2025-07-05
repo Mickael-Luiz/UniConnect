@@ -36,7 +36,7 @@ export const routes: Routes = [
     path: 'faculdade', canActivate: [faculdadeGuard], component: MainLayoutComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'curso', component: ListaCursosComponent},
+      { path: 'cursos', component: ListaCursosComponent},
       { path: 'curso/:id', component: CursoComponent}
     ]
   },
