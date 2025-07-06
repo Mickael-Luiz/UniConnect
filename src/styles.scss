@@ -3,8 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-input, .p-select > span{
-  height: 33px;
+input,
+.p-select>span,
+.p-multiselect,
+.p-autocomplete
+{
+height: 40px;
+width: 100%;
 }
 
 .hide-scrollbar {
@@ -22,15 +27,22 @@ input.p-inputtext:focus {
   outline: none !important;
 }
 
-.p-select.p-focus {
+.p-select.p-focus, .p-multiselect.p-focus {
   border-color: #1e40af !important;
   box-shadow: 0 0 0 0.05rem rgba(30, 64, 175, 0.5) !important;
   outline: none !important;
 }
 
-.p-select-option.p-select-option-selected.p-focus {
+.p-select-option.p-select-option-selected.p-focus,
+.p-autocomplete-option.p-autocomplete-option-selected,
+.p-multiselect-option.p-multiselect-option-selected {
   background-color: #c7cfec !important;
   color: black !important;
+}
+
+.p-checkbox-checked .p-checkbox-box {
+  border-color: #2c3650 !important;
+  background-color: #2c3650 !important;
 }
 
 .p-button {
@@ -52,7 +64,7 @@ input.p-inputtext:focus {
   outline: none !important;
 }
 
-.p-select > span {
+.p-select>span, .p-multiselect {
   display: flex;
   align-items: center;
 }

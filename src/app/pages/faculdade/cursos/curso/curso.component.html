@@ -1,6 +1,6 @@
-<div class="w-full h-full flex flex-col gap-5 p-5 overflow-auto hide-scrollbar">
+<div class="w-full h-full flex flex-col gap-5 p-5">
 
-  <div class="w-full h-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col">
+  <div class="w-full h-full bg-[#eaeff6] rounded-xl p-3 gap-3 flex flex-col overflow-auto hide-scrollbar">
 
     <p-stepper [value]="1" class="basis-[50rem]">
       <p-step-list>
@@ -30,7 +30,7 @@
           <ng-template #content let-activateCallback="activateCallback">
             <div class="flex flex-col">
               <div
-                class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 font-medium w-full">
+                class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 font-medium w-full p-5">
                 <app-grade-curricular></app-grade-curricular>
               </div>
             </div>

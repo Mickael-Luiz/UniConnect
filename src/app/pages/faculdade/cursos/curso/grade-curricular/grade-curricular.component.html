@@ -1,66 +1,112 @@
-<div class="w-full flex flex-col justify-start gap-3">
+<div class="w-full flex flex-col justify-start gap-3 p-2">
 
-  <div class="flex gap-3">
+  <div class="flex gap-3 justify-end">
     <p-button label="Adicionar Semestre" icon="pi pi-plus" iconPos="right" (onClick)="adicionarSemestre()" />
     <!-- <p-button label="Visualizar Semestres" (click)="visualizarSemestre()" /> -->
   </div>
 
+  @if(semestres.length > 0) {
   <h2 class="text-xl font-semibold text-gray-800 col-span-12">Semestres</h2>
+  } @else {
+  <h2 class="text-xl font-semibold text-gray-800 col-span-12 text-center">Nenhum semestre criado</h2>
+  }
 
-  <div>
-    <p-accordion value="0" class="flex flex-col gap-1">
-      @for(semestre of semestres; track semestre) {
-      <p-accordion-panel [value]="semestre.id">
-        <p-accordion-header>
-          <ng-template #toggleicon let-active="active">
-            @if (active) {
-            <i class="pi pi-minus"></i>
-            } @else {
-            <i class="pi pi-plus"></i>
-            }
-          </ng-template>
-          <span class="flex items-center gap-2 w-full">
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
-            <span class="font-bold whitespace-nowrap">{{ semestre.id + '° Semestre'}}</span>
-            <p-badge class="ml-auto mr-2" />
-          </span>
-        </p-accordion-header>
-        <p-accordion-content>
+  <!-- Accordion Semestres -->
+  <p-accordion value="0" class="flex flex-col gap-3">
+    @for(semestre of semestres; track semestre) {
+    <p-accordion-panel [value]="semestre.id">
+      <p-accordion-header>
+        <ng-template #toggleicon let-active="active">
+          @if (active) {
+          <i class="pi pi-minus"></i>
+          } @else {
+          <i class="pi pi-plus"></i>
+          }
+        </ng-template>
+        <span class="flex items-center gap-2 w-full">
+          <!-- <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" /> -->
+          <span class="font-bold whitespace-nowrap">{{ semestre.id + '° Semestre'}}</span>
+          <p-badge class="ml-auto mr-2" />
+        </span>
+      </p-accordion-header>
+      <p-accordion-content>
 
-          <h2 class="text-md mb-2 text-gray-800 col-span-12">Disciplinas</h2>
+        @if(semestre.disciplinas.length > 0) {
+        <h2 class="text-md mb-2 text-gray-800 col-span-12">Disciplinas</h2>
+        } @else {
+        <h2 class="text-md mb-2 text-gray-800 col-span-12">Nenhuma disciplina adicionada</h2>
+        }
 
-          <p-accordion value="1" class="flex flex-col gap-2 mb-3">
-            @for(disciplinaCur of semestre.disciplinas; track disciplinaCur) {
-            <p-accordion-panel [value]="disciplinaCur.disciplina.id">
-              <p-accordion-header style="background-color: rgb(243, 246, 250);">
-                <ng-template #toggleicon let-active="active">
-                  @if (active) {
-                  <i class="pi pi-minus"></i>
-                  } @else {
-                  <i class="pi pi-plus"></i>
-                  }
-                </ng-template>
-                <span class="flex items-center gap-2 w-full">
-                  <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                    shape="circle" />
-                  <span class="font-bold whitespace-nowrap">{{ disciplinaCur.disciplina.titulo }}</span>
-                  <p-badge class="ml-auto mr-2" />
-                </span>
-              </p-accordion-header>
-              <p-accordion-content>
-                <p>
-                  TTTTTTTTTTEEEEEEEEEEESSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEE
-                </p>
-              </p-accordion-content>
-            </p-accordion-panel>
-            }
-          </p-accordion>
+        <!-- Accordion Disciplinas -->
+        <p-accordion value="1" class="flex flex-col gap-2 mb-5">
+          @for(disciplinaCur of semestre.disciplinas; track disciplinaCur) {
+          <p-accordion-panel [value]="disciplinaCur.disciplina.id">
+            <p-accordion-header style="background-color: hsl(0, 0%, 94%);">
+              <ng-template #toggleicon let-active="active">
+                @if (active) {
+                <i class="pi pi-minus"></i>
+                } @else {
+                <i class="pi pi-plus"></i>
+                }
+              </ng-template>
+              <span class="flex items-center gap-2 w-full">
+                <!-- <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" /> -->
+                <span class="font-bold whitespace-nowrap">{{ disciplinaCur.disciplina.titulo }}</span>
+                <p-badge class="ml-auto mr-2" />
+              </span>
+            </p-accordion-header>
+            <p-accordion-content>
 
-          <p-button label="Adicionar disciplina" icon="pi pi-plus" iconPos="right"
-            (onClick)="adicionarDisciplina(semestre.id)" />
-        </p-accordion-content>
-      </p-accordion-panel>
-      }
-    </p-accordion>
-  </div>
+              <!-- Formulário Disciplina -->
+              <form [formGroup]="formDisciplina" class="grid grid-cols-2 gap-3 pt-3">
+                <div class="flex flex-col gap-1 col-span-1">
+                  <label for="disciplina" class="text-sm font-medium text-gray-700">Disciplina</label>
+                  <p-autoComplete id="disciplina" formControlName="disciplina" [suggestions]="disciplinasFiltradas"
+                    (completeMethod)="filtrarDisciplinas($event.query)" field="titulo" [dropdown]="true"
+                    [forceSelection]="true" [virtualScroll]="true" [virtualScrollItemSize]="40"
+                    placeholder="Selecione uma disciplina">
+                  </p-autoComplete>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label for="professor" class="text-sm font-medium text-gray-700">Professor</label>
+                  <p-autocomplete id="professor" formControlName="professor" [suggestions]="professoresFiltrados"
+                    (completeMethod)="filtrarProfessores($event.query)" field="nome" [virtualScroll]="true"
+                    [virtualScrollItemSize]="40" [forceSelection]="true" placeholder="Selecione um Professor">
+                  </p-autocomplete>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label for="diaSemana" class="text-sm font-medium text-gray-700">Dia da Semana</label>
+                  <p-select id="diaSemana" formControlName="diaSemana" class="w-full" optionLabel="label"
+                    optionValue="value" [options]="diasSemana" placeholder="Selecione o dia"/>
+                </div>
+                <div class="flex flex-col gap-1 col-span-1">
+                  <label for="disciplina" class="text-sm font-medium text-gray-700">Horário</label>
+                  <p-multiselect [group]="true" [options]="horariosAgrupados" formControlName="horarios" placeholder="Marcar Horários"
+                    scrollHeight="180px" display="chip" class="w-full" [filter]="false" [showToggleAll]="false">
+                    <ng-template let-group #group>
+                      <div class="flex items-center">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                          [class]="'mr-2 flag flag-' + group.value" style="width: 20px" />
+                        <span>{{ group.label }}</span>
+                      </div>
+                    </ng-template>
+                  </p-multiselect>
+                </div>
+                <div class="flex flex-col items-end justify-start gap-1 col-span-2 h-[170px]">
+                  <p-button label="Salvar" />
+                </div>
+              </form>
+
+            </p-accordion-content>
+          </p-accordion-panel>
+          }
+        </p-accordion>
+
+        <p-button label="Adicionar disciplina" icon="pi pi-plus" iconPos="right"
+          (onClick)="adicionarDisciplina(semestre.id)" />
+      </p-accordion-content>
+    </p-accordion-panel>
+    }
+  </p-accordion>
+
 </div>
