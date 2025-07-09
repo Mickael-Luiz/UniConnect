@@ -5,7 +5,6 @@ import { RegistroProfessorComponent } from './pages/register-options/registro-pr
 import { RegistroFaculdadeComponent } from './pages/register-options/registro-faculdade/registro-faculdade.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegistroAlunoComponent } from './pages/register-options/registro-aluno/registro-aluno.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardComponent } from './pages/faculdade/dashboard/dashboard.component';
 import { faculdadeGuard } from './guards/faculdade.guard';
@@ -27,7 +26,6 @@ export const routes: Routes = [
     path: 'registrar', component: AuthLayoutComponent,
     children: [
       { path: '', component: RegisterOptionsComponent },
-      { path: 'aluno', component: RegistroAlunoComponent },
       { path: 'professor', component: RegistroProfessorComponent },
       { path: 'faculdade', component: RegistroFaculdadeComponent },
     ]

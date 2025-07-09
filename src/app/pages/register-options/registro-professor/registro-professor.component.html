@@ -1,38 +1,24 @@
-<h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Registrando como Professor</h2>
+<div class="h-full w-full flex flex-col justify-center items-center">
 
-<form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center -translate-y-5">Registro de Usuário</h2>
 
-  <div class="flex flex-col md:col-span-2">
-    <label for="nome" class="mb-1 text-sm font-medium text-gray-700">Nome Completo</label>
-    <input id="nome" formControlName="nome" type="text"
-      class="p-2 uppercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" />
-  </div>
+  <form class="flex flex-col gap-5 w-full items-center">
 
-  <div class="flex flex-col md:col-span-2">
-    <label for="email" class="mb-1 text-sm font-medium text-gray-700">Email</label>
-    <input id="email" formControlName="email" type="email"
-      class="p-2 lowercase border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" />
-  </div>
+    <div class="flex flex-col md:col-span-2 w-[350px]">
+      <label for="nome" class="mb-1 text-sm font-medium text-gray-700">Nome Completo</label>
+      <input pInputText id="nome" formControlName="nome"
+        class="p-inputtext-sm w-full p-3 rounded-md border border-gray-300" />
+    </div>
 
-  <div class="flex flex-col">
-    <label for="telefone" class="mb-1 text-sm font-medium text-gray-700">Telefone</label>
-    <input id="telefone" formControlName="telefone" type="tel"
-      class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" />
-  </div>
+    <div class="flex flex-col md:col-span-2 w-[350px]">
+      <label for="email" class="mb-1 text-sm font-medium text-gray-700">Email</label>
+      <input pInputText id="email" formControlName="email"
+        class="p-inputtext-sm w-full p-3 rounded-md border border-gray-300" />
+    </div>
 
-  <div class="flex flex-col">
-    <label for="dataNascimento" class="mb-1 text-sm font-medium text-gray-700">Nascimento</label>
-    <input id="dataNascimento" formControlName="dataNascimento" type="date"
-      class="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500" />
-  </div>
-
-  <div class="md:col-span-2 flex justify-between mt-6 gap-4">
-    <button type="button" class="flex-1 px-6 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition" (click)="navigateTo('registrar')">
-      Voltar
-    </button>
-
-    <button type="button" class="flex-1 px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-950 transition">
-      Registrar
-    </button>
-  </div>
-</form>
+    <div class="md:col-span-2 flex justify-between mt-6 gap-4 w-[350px]">
+      <p-button label="Voltar" class="w-[50%] btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200" severity="secondary" (click)="navigateTo('registrar')"/>
+      <p-button label="Confirmar" class="w-[50%] text-white bg-slate-800 rounded-md" />
+    </div>
+  </form>
+</div>
