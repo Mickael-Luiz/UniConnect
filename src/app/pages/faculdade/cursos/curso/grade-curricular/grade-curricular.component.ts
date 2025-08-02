@@ -9,7 +9,7 @@ import { DisciplinaInterface, DisciplinaSelecionadaInterface } from '../../../..
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { UserInterface } from '../../../../../interfaces/UserInterface';
+import { UsuarioInterface } from '../../../../../interfaces/UsuarioInterface';
 
 @Component({
   selector: 'app-grade-curricular',
@@ -41,11 +41,11 @@ export class GradeCurricularComponent {
     { id: 4, titulo: 'Engenharia de Software', cargaHoraria: 60 }
   ]
 
-  professores: UserInterface[] = [
-    { id: 1, nome: 'Ed Wilson Júnior', email: 'edificio@gmail.com', tipo: 'professor' },
-    { id: 2, nome: 'Gleiciane da Silva', email: 'gleicinha@gmail.com', tipo: 'professor' },
-    { id: 3, nome: 'David Padilha', email: 'padilhatopatudo@gmail.com', tipo: 'professor' },
-    { id: 4, nome: 'Professor Exemplo', email: 'profexample@gmail.com', tipo: 'professor' }
+  professores: UsuarioInterface[] = [
+    { id: 1, nome: 'Ed Wilson Júnior', email: 'edificio@gmail.com' },
+    { id: 2, nome: 'Gleiciane da Silva', email: 'gleicinha@gmail.com' },
+    { id: 3, nome: 'David Padilha', email: 'padilhatopatudo@gmail.com' },
+    { id: 4, nome: 'Professor Exemplo', email: 'profexample@gmail.com' }
   ]
 
   diasSemana: { value: number, label: string }[] = [
@@ -90,7 +90,7 @@ export class GradeCurricularComponent {
 ];
 
   disciplinasFiltradas: DisciplinaInterface[] = [];
-  professoresFiltrados: UserInterface[] = []
+  professoresFiltrados: UsuarioInterface[] = []
 
   constructor(private fb: FormBuilder) {
     this.formDisciplina = this.fb.group({
