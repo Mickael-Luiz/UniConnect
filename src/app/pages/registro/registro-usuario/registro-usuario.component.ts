@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { UsuarioService } from '../../../services/auth/usuario.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { ReactiveFormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-registro-usuario',
   standalone: true,

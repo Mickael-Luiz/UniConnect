@@ -10,6 +10,7 @@ import { faculdadeGuard } from './guards/faculdade.guard';
 import { ListaCursosComponent } from './pages/faculdade/cursos/lista-cursos/lista-cursos.component';
 import { CursoComponent } from './pages/faculdade/cursos/curso/curso.component';
 import { RegistroUsuarioComponent } from './pages/registro/registro-usuario/registro-usuario.component';
+import { ConfirmacaoComponent } from './pages/registro/confirmacao/confirmacao.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
       { path: '', component: RegistroComponent },
       { path: 'usuario', component: RegistroUsuarioComponent },
       { path: 'faculdade', component: RegistroFaculdadeComponent },
+      { path: 'confirmar', component: ConfirmacaoComponent },
     ]
   },
   {
