@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { RegisterOptionsComponent } from './pages/register-options/register-options.component';
-import { RegistroProfessorComponent } from './pages/register-options/registro-professor/registro-professor.component';
-import { RegistroFaculdadeComponent } from './pages/register-options/registro-faculdade/registro-faculdade.component';
+import { RegistroComponent } from './pages/registro/registro.component';
+import { RegistroFaculdadeComponent } from './pages/registro/registro-faculdade/registro-faculdade.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
@@ -10,6 +9,7 @@ import { DashboardComponent } from './pages/faculdade/dashboard/dashboard.compon
 import { faculdadeGuard } from './guards/faculdade.guard';
 import { ListaCursosComponent } from './pages/faculdade/cursos/lista-cursos/lista-cursos.component';
 import { CursoComponent } from './pages/faculdade/cursos/curso/curso.component';
+import { RegistroUsuarioComponent } from './pages/registro/registro-usuario/registro-usuario.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -25,8 +25,8 @@ export const routes: Routes = [
   {
     path: 'registrar', component: AuthLayoutComponent,
     children: [
-      { path: '', component: RegisterOptionsComponent },
-      { path: 'professor', component: RegistroProfessorComponent },
+      { path: '', component: RegistroComponent },
+      { path: 'usuario', component: RegistroUsuarioComponent },
       { path: 'faculdade', component: RegistroFaculdadeComponent },
     ]
   },

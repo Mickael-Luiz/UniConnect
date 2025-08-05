@@ -2,7 +2,7 @@
 
   <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center -translate-y-5">Registro de Usuário</h2>
 
-  <form class="flex flex-col gap-5 w-full items-center">
+  <form class="flex flex-col gap-5 w-full items-center" [formGroup]="formUser">
 
     <div class="flex flex-col md:col-span-2 w-[350px]">
       <label for="nome" class="mb-1 text-sm font-medium text-gray-700">Nome Completo</label>
@@ -18,7 +18,7 @@
 
     <div class="md:col-span-2 flex justify-between mt-6 gap-4 w-[350px]">
       <p-button label="Voltar" class="w-[50%] btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200" severity="secondary" (click)="navigateTo('registrar')"/>
-      <p-button label="Confirmar" class="w-[50%] text-white bg-slate-800 rounded-md" />
+      <p-button label="Confirmar" class="w-[50%] text-white bg-slate-800 rounded-md" (click)="criarUsuario()"/>
     </div>
   </form>
 </div>

@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register-options',
+  selector: 'app-registro',
   standalone: true,
   imports: [],
-  templateUrl: './register-options.component.html',
-  styleUrl: './register-options.component.scss',
+  templateUrl: './registro.component.html',
+  styleUrl: './registro.component.scss',
   host: {
     class: 'w-full h-full'
   }
 })
-export class RegisterOptionsComponent {
+export class RegistroComponent {
 
   constructor(private router: Router) {}
 

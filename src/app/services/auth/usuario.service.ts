@@ -8,7 +8,7 @@ import { UsuarioCreateInterface, UsuarioInterface } from '../../interfaces/Usuar
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = `${environment.apiUrl}/usuarios`;
+  private apiUrl = `${environment.apiUrl}/public/usuario`;
 
   constructor(private http: HttpClient) {}
 
