@@ -3,14 +3,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UsuarioService } from '../../../services/auth/usuario.service';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-confirmacao',
   imports: [
     ButtonModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    LoadingComponent,
+    ToastModule
   ],
+  providers: [MessageService],
   templateUrl: './confirmacao.component.html',
   styleUrl: './confirmacao.component.scss'
 })
@@ -19,6 +26,8 @@ export class ConfirmacaoComponent {
   formSenha!: FormGroup;
   senhaInvalida: boolean = false;
   mostrarSenha: boolean = false;
+  token!: string
+  loading = false
 
   senhaRegrasStatus = {
     minLength: false,
@@ -31,13 +40,14 @@ export class ConfirmacaoComponent {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private usuarioService: UsuarioService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const token = params['token'];
-      console.log('token recebido: ', token);
+      this.token = params['token'];
     })
     this.formSenha = this.fb.group({
       senha: ['', [Validators.required, this.passwordValidator]],
@@ -85,8 +95,16 @@ export class ConfirmacaoComponent {
 
     this.senhaInvalida = false;
 
-    // Chamar backend para salvar a senha
-    console.log('Senha válida e confirmada');
+    this.usuarioService.confirmarUsuario({token: this.token, senha: this.formSenha.get('senha')?.value}).subscribe({
+      next: response => {
+        this.router.navigate(['/login'])
+        this.messageService.add({severity: 'success', summary: 'Sucesso', detail: 'Usuario criado com sucesso'})
+      }, error: e => {
+        this.messageService.add({severity: 'error', summary: 'Erro', detail: e})
+      }
+    }
+    )
+    
   }
 
   atualizarValidacoesSenha(senha: string) {

@@ -1,3 +1,5 @@
+<app-loading></app-loading>
+<p-toast />
 <div class="h-full w-full flex flex-col items-center justify-center py-10 gap-5">
   <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Definir Senha</h2>
 
@@ -9,22 +11,21 @@
       <!-- Coluna esquerda - campos de senha -->
       <div class="flex flex-col gap-5 border-r-2 pr-3">
         <div class="flex flex-col w-full relative">
-        <label for="senha" class="mb-1 text-sm font-medium text-gray-700">Senha</label>
-        <input pInputText id="senha" formControlName="senha" [type]="mostrarSenha ? 'text' : 'password'"
-          class="p-inputtext-sm w-full p-3 pr-10 rounded-md border border-gray-300" />
-        <i [ngClass]="mostrarSenha ? 'pi pi-eye-slash' : 'pi pi-eye'"
-          class="absolute right-3 top-[38px] cursor-pointer text-gray-500"
-          (click)="alternarVisualizacaoSenha()"></i>
-      </div>
+          <label for="senha" class="mb-1 text-sm font-medium text-gray-700">Senha</label>
+          <input pInputText id="senha" formControlName="senha" [type]="mostrarSenha ? 'text' : 'password'"
+            class="p-inputtext-sm w-full p-3 pr-10 rounded-md border border-gray-300" />
+          <i [ngClass]="mostrarSenha ? 'pi pi-eye-slash' : 'pi pi-eye'"
+            class="absolute right-3 top-[38px] cursor-pointer text-gray-500" (click)="alternarVisualizacaoSenha()"></i>
+        </div>
 
         <div class="flex flex-col w-full relative">
-        <label for="confirmarSenha" class="mb-1 text-sm font-medium text-gray-700">Confirmar Senha</label>
-        <input pInputText id="confirmarSenha" formControlName="confirmarSenha" [type]="mostrarSenha ? 'text' : 'password'"
-          class="p-inputtext-sm w-full p-3 pr-10 rounded-md border border-gray-300" />
-        <i [ngClass]="mostrarSenha ? 'pi pi-eye-slash' : 'pi pi-eye'"
-          class="absolute right-3 top-[38px] cursor-pointer text-gray-500"
-          (click)="alternarVisualizacaoSenha()"></i>
-      </div>
+          <label for="confirmarSenha" class="mb-1 text-sm font-medium text-gray-700">Confirmar Senha</label>
+          <input pInputText id="confirmarSenha" formControlName="confirmarSenha"
+            [type]="mostrarSenha ? 'text' : 'password'"
+            class="p-inputtext-sm w-full p-3 pr-10 rounded-md border border-gray-300" />
+          <i [ngClass]="mostrarSenha ? 'pi pi-eye-slash' : 'pi pi-eye'"
+            class="absolute right-3 top-[38px] cursor-pointer text-gray-500" (click)="alternarVisualizacaoSenha()"></i>
+        </div>
 
         @if(senhaInvalida) {
         <div class="text-red-600 text-sm text-left">
@@ -37,31 +38,56 @@
       <div class="grid grid-cols-1 sm:grid-cols-1 gap-y-2 text-sm pl-3">
         <div class="flex items-center gap-2"
           [ngClass]="senhaRegrasStatus.minLength ? 'text-green-600' : 'text-red-600'">
-          <span>{{ senhaRegrasStatus.minLength ? '✅' : '❌' }}</span> Mínimo 8 caracteres
+          @if (senhaRegrasStatus.minLength) {
+          <i class="pi pi-check" style="color: green;"></i>
+          } @else {
+          <i class="pi pi-times" style="color: red;"></i>
+          }
+          Mínimo 8 caracteres
         </div>
-        <div class="flex items-center gap-2"
-          [ngClass]="senhaRegrasStatus.number ? 'text-green-600' : 'text-red-600'">
-          <span>{{ senhaRegrasStatus.number ? '✅' : '❌' }}</span> Pelo menos 1 número
+
+        <div class="flex items-center gap-2" [ngClass]="senhaRegrasStatus.number ? 'text-green-600' : 'text-red-600'">
+          @if (senhaRegrasStatus.number) {
+          <i class="pi pi-check" style="color: green;"></i>
+          } @else {
+          <i class="pi pi-times" style="color: red;"></i>
+          }
+          Pelo menos 1 número
         </div>
-        <div class="flex items-center gap-2"
-          [ngClass]="senhaRegrasStatus.upper ? 'text-green-600' : 'text-red-600'">
-          <span>{{ senhaRegrasStatus.upper ? '✅' : '❌' }}</span> Pelo menos 1 letra maiúscula
+
+        <div class="flex items-center gap-2" [ngClass]="senhaRegrasStatus.upper ? 'text-green-600' : 'text-red-600'">
+          @if (senhaRegrasStatus.upper) {
+          <i class="pi pi-check" style="color: green;"></i>
+          } @else {
+          <i class="pi pi-times" style="color: red;"></i>
+          }
+          Pelo menos 1 letra maiúscula
         </div>
-        <div class="flex items-center gap-2"
-          [ngClass]="senhaRegrasStatus.lower ? 'text-green-600' : 'text-red-600'">
-          <span>{{ senhaRegrasStatus.lower ? '✅' : '❌' }}</span> Pelo menos 1 letra minúscula
+
+        <div class="flex items-center gap-2" [ngClass]="senhaRegrasStatus.lower ? 'text-green-600' : 'text-red-600'">
+          @if (senhaRegrasStatus.lower) {
+          <i class="pi pi-check" style="color: green;"></i>
+          } @else {
+          <i class="pi pi-times" style="color: red;"></i>
+          }
+          Pelo menos 1 letra minúscula
         </div>
-        <div class="flex items-center gap-2"
-          [ngClass]="senhaRegrasStatus.special ? 'text-green-600' : 'text-red-600'">
-          <span>{{ senhaRegrasStatus.special ? '✅' : '❌' }}</span> Pelo menos 1 caractere especial
+
+        <div class="flex items-center gap-2" [ngClass]="senhaRegrasStatus.special ? 'text-green-600' : 'text-red-600'">
+          @if (senhaRegrasStatus.special) {
+          <i class="pi pi-check" style="color: green;"></i>
+          } @else {
+          <i class="pi pi-times" style="color: red;"></i>
+          }
+          Pelo menos 1 caractere especial
         </div>
       </div>
+
     </div>
 
     <!-- Botões embaixo ocupando toda a largura -->
     <div class="flex justify-between mt-10 gap-4 w-full max-w-3xl">
-      <p-button label="Voltar"
-        class="w-1/2 btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200"
+      <p-button label="Voltar" class="w-1/2 btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200"
         severity="secondary" />
       <p-button label="Confirmar" class="w-1/2 text-white bg-slate-800 rounded-md" type="submit" />
     </div>

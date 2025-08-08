@@ -3,22 +3,25 @@ import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { UsuarioService } from '../../../services/auth/usuario.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
+
 @Component({
   selector: 'app-registro-usuario',
   standalone: true,
   imports: [
     ButtonModule,
-    ToastModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoadingComponent
   ],
+  providers: [MessageService],
   templateUrl: './registro-usuario.component.html',
   styleUrl: './registro-usuario.component.scss'
 })
 export class RegistroUsuarioComponent {
 
   formUser!: FormGroup
+  loading = false
 
   constructor(
     private router: Router,
@@ -34,11 +37,14 @@ export class RegistroUsuarioComponent {
 
   criarUsuario() {
     if (this.formUser.valid) {
+      this.loading = true;
       this.userService.criarUsuario(this.formUser.value).subscribe({
         next: response => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Usuario temporario criado com Sucesso' });
+          this.router.navigate(['registrar/aviso-email'])
         }, error: e => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Falha ao criar usuario: ' + e });
+        }, complete: () => {
+          this.loading = false
         }
       })
     }

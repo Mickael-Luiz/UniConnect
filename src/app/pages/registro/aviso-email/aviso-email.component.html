@@ -1,0 +1,17 @@
+<div class="h-full w-full flex flex-col justify-center items-center">
+  <i class="pi pi-envelope text-slate-800 text-5xl mb-4"></i>
+  <p class="mb-4 py-2 px-4 bg-slate-300 rounded-sm">
+    Enviamos um link de confirmação para <span class="font-bold">{{ email }}</span>
+  </p>
+  <p class="text-center mb-4">
+    Se você não recebeu o e-mail, verifique a caixa de spam
+  </p>
+  <p class="text-center">
+    Caso o email esteja incorreto, volte e informe o email correto
+  </p>
+  <div class="flex justify-center mt-6 gap-4 w-[350px]">
+      <p-button label="Voltar"
+        class="w-[50%] btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200" severity="secondary"
+        (click)="navigateTo('registrar/usuario')" />
+    </div>
+</div>

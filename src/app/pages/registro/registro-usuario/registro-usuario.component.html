@@ -1,3 +1,4 @@
+<app-loading [loading]="loading"></app-loading>
 <div class="h-full w-full flex flex-col justify-center items-center">
 
   <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center -translate-y-5">Registro de Usuário</h2>
@@ -17,8 +18,10 @@
     </div>
 
     <div class="md:col-span-2 flex justify-between mt-6 gap-4 w-[350px]">
-      <p-button label="Voltar" class="w-[50%] btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200" severity="secondary" (click)="navigateTo('registrar')"/>
-      <p-button label="Confirmar" class="w-[50%] text-white bg-slate-800 rounded-md" (click)="criarUsuario()"/>
+      <p-button label="Voltar"
+        class="w-[50%] btn-voltar bg-slate-300 rounded-md hover:bg-gray-400 hover:border-gray-200" severity="secondary"
+        (click)="navigateTo('registrar')" />
+      <p-button label="Confirmar" class="w-[50%] text-white bg-slate-800 rounded-md" (click)="criarUsuario()" />
     </div>
   </form>
 </div>

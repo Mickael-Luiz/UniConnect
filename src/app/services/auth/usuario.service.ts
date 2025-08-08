@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { UsuarioCreateInterface, UsuarioInterface } from '../../interfaces/UsuarioInterface';
+import { ConfirmarSenhaInterface, UsuarioCreateInterface, UsuarioInterface } from '../../interfaces/UsuarioInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,9 @@ export class UsuarioService {
 
   criarUsuario(usuario: UsuarioCreateInterface): Observable<UsuarioCreateInterface> {
     return this.http.post<UsuarioCreateInterface>(this.apiUrl, usuario);
+  }
+
+  confirmarUsuario(confirmacao: ConfirmarSenhaInterface) {
+    return this.http.post<UsuarioInterface>(`${this.apiUrl}/confirmar-senha`, confirmacao)
   }
 }

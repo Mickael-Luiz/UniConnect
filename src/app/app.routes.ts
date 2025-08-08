@@ -11,6 +11,7 @@ import { ListaCursosComponent } from './pages/faculdade/cursos/lista-cursos/list
 import { CursoComponent } from './pages/faculdade/cursos/curso/curso.component';
 import { RegistroUsuarioComponent } from './pages/registro/registro-usuario/registro-usuario.component';
 import { ConfirmacaoComponent } from './pages/registro/confirmacao/confirmacao.component';
+import { AvisoEmailComponent } from './pages/registro/aviso-email/aviso-email.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -30,6 +31,7 @@ export const routes: Routes = [
       { path: 'usuario', component: RegistroUsuarioComponent },
       { path: 'faculdade', component: RegistroFaculdadeComponent },
       { path: 'confirmar', component: ConfirmacaoComponent },
+      { path: 'aviso-email', component: AvisoEmailComponent}
     ]
   },
   {

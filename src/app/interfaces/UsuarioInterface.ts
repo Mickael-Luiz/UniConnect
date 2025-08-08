@@ -13,3 +13,8 @@ export interface UsuarioCreateInterface {
   nome: string
   email: string
 }
+
+export interface ConfirmarSenhaInterface {
+  token: string,
+  senha: string
+}
