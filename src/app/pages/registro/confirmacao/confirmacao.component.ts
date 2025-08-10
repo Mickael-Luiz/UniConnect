@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UsuarioService } from '../../../services/auth/usuario.service';
+import { CriarUsuarioService } from '../../../services/auth/criar-usuario.service';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmarSenhaInterface } from '../../../interfaces/UsuarioInterface';
 
 @Component({
   selector: 'app-confirmacao',
@@ -27,6 +28,7 @@ export class ConfirmacaoComponent {
   senhaInvalida: boolean = false;
   mostrarSenha: boolean = false;
   token!: string
+  tipo!: string
   loading = false
 
   senhaRegrasStatus = {
@@ -41,13 +43,14 @@ export class ConfirmacaoComponent {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private usuarioService: UsuarioService,
+    private createService: CriarUsuarioService,
     private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.token = params['token'];
+      this.tipo = params['tipo'];
     })
     this.formSenha = this.fb.group({
       senha: ['', [Validators.required, this.passwordValidator]],
@@ -95,7 +98,13 @@ export class ConfirmacaoComponent {
 
     this.senhaInvalida = false;
 
-    this.usuarioService.confirmarUsuario({token: this.token, senha: this.formSenha.get('senha')?.value}).subscribe({
+    const params: ConfirmarSenhaInterface = {
+      token: this.token,
+      senha: this.formSenha.get('senha')?.value,
+      tipo: this.tipo
+    }
+
+    this.createService.confirmarUsuario(params).subscribe({
       next: response => {
         this.router.navigate(['/login'])
         this.messageService.add({severity: 'success', summary: 'Sucesso', detail: 'Usuario criado com sucesso'})

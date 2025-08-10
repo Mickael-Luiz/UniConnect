@@ -9,12 +9,19 @@ export interface UsuarioInterface {
   endereco?: EnderecoInterface;
 }
 
-export interface UsuarioCreateInterface {
+export interface UsuarioPFCreateInterface {
   nome: string
+  email: string
+}
+
+export interface UsuarioPJCreateInterface {
+  cnpj: string
+  razaoSocial: string
   email: string
 }
 
 export interface ConfirmarSenhaInterface {
   token: string,
-  senha: string
+  senha: string,
+  tipo: string
 }

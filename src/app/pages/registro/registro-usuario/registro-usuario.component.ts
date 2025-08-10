@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { UsuarioService } from '../../../services/auth/usuario.service';
+import { CriarUsuarioService } from '../../../services/auth/criar-usuario.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
@@ -25,7 +25,7 @@ export class RegistroUsuarioComponent {
 
   constructor(
     private router: Router,
-    private userService: UsuarioService,
+    private createService: CriarUsuarioService,
     private fb: FormBuilder,
     private messageService: MessageService
   ) {
@@ -38,12 +38,12 @@ export class RegistroUsuarioComponent {
   criarUsuario() {
     if (this.formUser.valid) {
       this.loading = true;
-      this.userService.criarUsuario(this.formUser.value).subscribe({
+      this.createService.criarUsuarioPF(this.formUser.value).subscribe({
         next: response => {
           this.router.navigate(['registrar/aviso-email'])
+          this.loading = false
         }, error: e => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Falha ao criar usuario: ' + e });
-        }, complete: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Falha ao criar perfil: ' + e });
           this.loading = false
         }
       })
