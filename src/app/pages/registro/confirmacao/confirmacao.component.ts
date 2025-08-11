@@ -106,7 +106,7 @@ export class ConfirmacaoComponent {
     
     this.createService.confirmarUsuario(params).subscribe({
       next: response => {
-        this.messageService.add({severity: 'success', summary: 'Usuário Confirmado', detail: 'Realize login para acessar seu perfil', life: 5000})
+        this.messageService.add({severity: 'success', summary: 'Conta Salva', detail: 'Faça login para acessar sua página', life: 5000})
         this.router.navigate(['/login'])
         this.loading = false;
       }, error: e => {
