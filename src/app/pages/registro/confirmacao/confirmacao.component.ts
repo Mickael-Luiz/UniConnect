@@ -18,7 +18,7 @@ import { ConfirmarSenhaInterface } from '../../../interfaces/UsuarioInterface';
     LoadingComponent,
     ToastModule
   ],
-  providers: [MessageService],
+  providers: [],
   templateUrl: './confirmacao.component.html',
   styleUrl: './confirmacao.component.scss'
 })
@@ -97,19 +97,21 @@ export class ConfirmacaoComponent {
     }
 
     this.senhaInvalida = false;
-
+    this.loading = true;
     const params: ConfirmarSenhaInterface = {
       token: this.token,
       senha: this.formSenha.get('senha')?.value,
       tipo: this.tipo
     }
-
+    
     this.createService.confirmarUsuario(params).subscribe({
       next: response => {
+        this.messageService.add({severity: 'success', summary: 'Usuário Confirmado', detail: 'Realize login para acessar seu perfil', life: 5000})
         this.router.navigate(['/login'])
-        this.messageService.add({severity: 'success', summary: 'Sucesso', detail: 'Usuario criado com sucesso'})
+        this.loading = false;
       }, error: e => {
         this.messageService.add({severity: 'error', summary: 'Erro', detail: e})
+        this.loading = false;
       }
     }
     )
