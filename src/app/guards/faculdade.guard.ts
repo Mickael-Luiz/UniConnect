@@ -6,10 +6,5 @@ export const faculdadeGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService)
   const router = inject(Router)
 
-  if(authService.isFaculdade()) {
-    return true;
-  } else {
-    router.navigate(['/login'])
     return false;
-  }
 };

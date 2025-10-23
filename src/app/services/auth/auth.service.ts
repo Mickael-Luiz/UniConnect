@@ -1,50 +1,41 @@
 import { Injectable } from '@angular/core';
 import { MOCK_USERS } from '../../mocks/mock-users';
+import { environment } from '../../../environments/environment';
+import { LoginRequestInterface } from '../../interfaces/LoginRequestInterface';
+import { Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { LoginResponseInterface } from '../../interfaces/LoginResponseInterface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly storageKey = 'usuario-logado';
+  private apiUrl = `${environment.apiUrl}/public`;
 
-  constructor() { }
+  // private readonly storageKey = 'usuario-logado';
 
-  login(email: string): boolean {
-    const user = MOCK_USERS.find(u => u.email == email);
-    if(user) {
-      localStorage.setItem(this.storageKey, JSON.stringify(user));
-      return true;
-    }
-    return false;
+  constructor(private http: HttpClient) { }
+
+  login(request: LoginRequestInterface): Observable<LoginResponseInterface> {
+
+    return this.http.post<LoginResponseInterface>(`${this.apiUrl}/login`, request)
+      .pipe(
+        tap(response => {
+          localStorage.setItem('token', response.token);
+        })
+      )
   }
 
-  logout() {
-    localStorage.removeItem(this.storageKey);
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
-  getUsuario() {
-    const user = localStorage.getItem(this.storageKey);
-    return user ? JSON.parse(user) : null;
+  logout(): void {
+    localStorage.removeItem('token');
   }
 
-  getPerfil() {
-    const user = this.getUsuario();
-    return user ? user.tipo : null;
+  isLoggedIn(): boolean {
+    return !!this.getToken();
   }
 
-  isFaculdade() {
-    return this.getPerfil() === 'FACULDADE';
-  }
-
-  isAluno() {
-    return this.getPerfil() === 'ALUNO';
-  }
-
-  isProfessor() {
-    return this.getPerfil() === 'PROFESSOR';
-  }
-
-  isLogado() {
-    return !!this.getUsuario();
-  }
 }

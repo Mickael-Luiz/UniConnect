@@ -16,7 +16,7 @@ export class LeftbarComponent {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.perfil = this.auth.getPerfil();
+    // this.perfil = this.auth.getPerfil();
   }
 
   logout() {
