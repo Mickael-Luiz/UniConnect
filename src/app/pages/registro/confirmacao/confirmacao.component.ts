@@ -18,7 +18,6 @@ import { ConfirmarSenhaInterface } from '../../../interfaces/UsuarioInterface';
     LoadingComponent,
     ToastModule
   ],
-  providers: [],
   templateUrl: './confirmacao.component.html',
   styleUrl: './confirmacao.component.scss'
 })

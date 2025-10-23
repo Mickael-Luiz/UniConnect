@@ -12,15 +12,15 @@ export class CriarUsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  criarUsuarioPF(usuario: UsuarioPFCreateInterface): Observable<UsuarioPFCreateInterface> {
-    return this.http.post<UsuarioPFCreateInterface>(`${this.apiUrl}/usuario-pf`, usuario);
+  criarUsuarioPF(usuario: UsuarioPFCreateInterface): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/criar-usuario-pf`, usuario);
   }
   
-  criarUsuarioPJ(usuario: UsuarioPJCreateInterface): Observable<UsuarioPJCreateInterface> {
-    return this.http.post<UsuarioPJCreateInterface>(`${this.apiUrl}/usuario-pj`, usuario);
+  criarUsuarioPJ(usuario: UsuarioPJCreateInterface): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}/create/usuario-pj`, usuario);
   }
 
   confirmarUsuario(confirmacao: ConfirmarSenhaInterface) {
-    return this.http.post<UsuarioInterface>(`${this.apiUrl}/usuario/confirmar-senha`, confirmacao)
+    return this.http.post<UsuarioInterface>(`${this.apiUrl}/confirmar-usuario-pf`, confirmacao)
   }
 }

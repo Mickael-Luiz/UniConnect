@@ -14,14 +14,13 @@ import { LoadingComponent } from '../../../shared/loading/loading.component';
     ReactiveFormsModule,
     LoadingComponent
   ],
-  providers: [MessageService],
   templateUrl: './registro-usuario.component.html',
-  styleUrl: './registro-usuario.component.scss'
+  styleUrls: ['./registro-usuario.component.scss']
 })
 export class RegistroUsuarioComponent {
 
-  formUser!: FormGroup
-  loading = false
+  formUser!: FormGroup;
+  loading = false;
 
   constructor(
     private router: Router,
@@ -40,18 +39,19 @@ export class RegistroUsuarioComponent {
       this.loading = true;
       this.createService.criarUsuarioPF(this.formUser.value).subscribe({
         next: response => {
-          this.router.navigate(['registrar/aviso-email'])
-          this.loading = false
+          this.messageService.add({ severity: 'success', summary: 'Enviado', detail: 'Enviamos um email de confirmação'});
+          this.router.navigate(['/registrar/aviso-email']);
+          this.loading = false;
         }, error: e => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Falha ao criar perfil: ' + e });
-          this.loading = false
+          this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Falha ao criar usuario'});
+          this.loading = false;
         }
       })
     }
   }
 
   navigateTo(url: string) {
-    this.router.navigate([url])
+    this.router.navigate([url]);
   }
 
 }
