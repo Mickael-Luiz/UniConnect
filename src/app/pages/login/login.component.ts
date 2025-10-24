@@ -34,9 +34,10 @@ export class LoginComponent {
     if (this.formUsuario.valid) {
       this.auth.login(this.formUsuario.value).subscribe({
         next: response => {
-          this.messageService.add({ severity: 'success', summary: 'Usuário Confirmado', detail: 'Seja Bem Vindo(a)'})
+          this.messageService.add({ severity: 'success', summary: 'Usuário Confirmado', detail: 'Seja Bem Vindo(a)'});
+          this.router.navigate(['user/home']);
         }, error: e => {
-          this.messageService.add({ severity: 'error', summary: 'Falha ao Confirmar Usuário', detail: 'Verifique seu email e senha'})
+          this.messageService.add({ severity: 'error', summary: 'Falha ao Confirmar Usuário', detail: 'Verifique seu email e senha'});
         }
       })
     }

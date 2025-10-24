@@ -12,6 +12,8 @@ import { CursoComponent } from './pages/faculdade/cursos/curso/curso.component';
 import { RegistroUsuarioComponent } from './pages/registro/registro-usuario/registro-usuario.component';
 import { ConfirmacaoComponent } from './pages/registro/confirmacao/confirmacao.component';
 import { AvisoEmailComponent } from './pages/registro/aviso-email/aviso-email.component';
+import { HomeComponent } from './pages/usuario/home/home.component';
+import { roleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -40,6 +42,12 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'cursos', component: ListaCursosComponent},
       { path: 'curso/:id', component: CursoComponent}
+    ]
+  },
+  {
+    path: 'user', component: MainLayoutComponent, children: [
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
+      { path: 'home', component: HomeComponent, canActivate: [roleGuard(['PF'])]}
     ]
   },
 
